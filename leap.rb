@@ -6,18 +6,16 @@ class Leap
     @end_year = end_year
   end
 
-  def determine_leap
-    years = (start_year..end_year).to_a
+  def leap_years
+    years = *start_year..end_year
 
     years.select do |year|
       if (year % 4 == 0)
-        if (year % 100 != 0 || (year % 400 == 0))
-          year
-        end
+        year if (year % 100 != 0 || (year % 400 == 0))
       end
     end
   end
 
 end
 
-puts Leap.new(1900, 2000).determine_leap
+puts Leap.new(1900, 2000).leap_years
